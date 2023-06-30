@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import AuthenticationForm
 
 
 def home(request):
     return render(request, "baseApp/index.html")
+#creating user
 def createUser(request):
     form=SignUpForm()
     if request.method == "POST":
@@ -17,8 +19,11 @@ def createUser(request):
             login(request, user)
             return redirect('home')
         else:
-            print ("return here")
-
-
+            print ("Data not sent")
 
     return render(request, "baseApp/login-register.html", {"form": form})
+#login
+def loginUser(request):
+    form = AuthenticationForm()
+    context={"form":form}
+    return render(request, "baseApp/login.html", context)
