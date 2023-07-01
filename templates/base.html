@@ -51,22 +51,34 @@
         <!-- Left links -->
   
         <div class="d-flex align-items-center">
-          <button type="button" class="btn btn-link px-3 me-2">
-            Login
-          </button>
-          <button type="button" class="btn btn-primary me-3">
-            Sign up 
-          </button>
+          {% if request.user.is_authenticated %}
+            <button type="button" class="btn btn-link px-3 me-2">
+              <a href="">Logout </a>
+            </button>
+          {% else %}
+              <button type="button" class="btn btn-link px-3 me-2">
+                <a href="{% url 'login' %}">Login </a>
+              </button>
+          {% endif %}
+          
+          {% if user.is.authenticated %}
+          <a class="btn btn-dark px-3"  href="{% url 'login' %}" role="button">Account</a>
+
+          {% else %}
           <a
-            class="btn btn-dark px-3"
-            href=""
-            role="button"
-            >Account</a>
+          class="btn btn-dark px-3"
+          href=""
+          role="button"
+          >{{ user.username }}</a>
+          {% endif %}
+          
+         
         </div>
       </div>
       <!-- Collapsible wrapper -->
     </div>
     <!-- Container wrapper -->
+    
   </nav>
   <!-- Navbar -->
 

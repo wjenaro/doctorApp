@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
-
+from django.contrib import messages
+from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 
 def home(request):
     return render(request, "baseApp/index.html")
@@ -19,11 +20,26 @@ def createUser(request):
             login(request, user)
             return redirect('home')
         else:
+            messages.add_message(request, messages.INFO, "Hello world.")
             print ("Data not sent")
 
     return render(request, "baseApp/login-register.html", {"form": form})
 #login
+@csrf_protect
+@ensure_csrf_cookie
 def loginUser(request):
-    form = AuthenticationForm()
-    context={"form":form}
+    #let login
+    if request.method =='POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            print(user)
+            login(request, user)
+            return redirect('home')
+        else: #if user is not fould, then a message 
+            print('User not found')      
+ 
+
+    context={}
     return render(request, "baseApp/login.html", context)
