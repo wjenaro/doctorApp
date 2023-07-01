@@ -1,0 +1,22 @@
+/*
+rating styling 
+*/
+#rating-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+  }
+  
+  .star {
+    font-size: 24px;
+    color: #ccc;
+  }
+  
+  .full-star {
+    color: #6a04f0;
+  }
+  /**/
+  body{
+    background-color: black;
+  }

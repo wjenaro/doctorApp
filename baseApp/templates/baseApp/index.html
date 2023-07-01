@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
+   
+  
 {% block content %}
 <diV class="container-fluid">
     <section>
-        <div class="row">
-            <div class="col-sm-2">1</div>
-            <div class="col-sm-8">Doctor appointment query</div>
-            <div class="col-sm-2">2</div>
-        </div>
+      <div class="px-4 py-5 my-5 text-center">
+        
+        <h1 class="display-5 fw-bold text-body-emphasis">appointment</h1>
+       
+      </div>
     </section>
     <section>
         <div class="container px-4 py-5" id="icon-grid">
-            <h2 class="pb-2 border-bottom"> here </h2> 
+            <h2 class="pb-2 border-bottom"> Best Rated Doctors </h2> 
                  
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
 
@@ -21,25 +23,58 @@
                 <img src="{{ item.image.url }}" alt="my image" style="float:left;  width: 1in; height: 1.2in;"/>
 
                 <div>
-                <h5>Name: <span>{{ item.full_name }}</span></h5>
+                <h5><span>{{ item.full_name }}</span></h5>
                 <h6><span>{{ item.specialization }}</span></h6>
-                <h6>Location: <span>{{ item.address }}</span></h6>
-                <h6>Rating: <span>stars</span></h6>
+                <h6><span>{{ item.address }}</span></h6>
+                
+                <div id="rating-container">
+                                         
+                 
+                  {% for i in rating %}
+                      {% if i.doctor == item %}
+
+                      <div class="stars" value="{{ i.rating }}"> </div>
+                                                                           
+                      {% endif %}
+                  {% endfor %}
+                </div>
+              
                 </div>
 
                 
+              
               </div>
 
               {% endfor %}
 
-             
-         
-          
+                              
             </div>
           </div>
          
     </section>
+    <script>
+      // Assume you have a variable called 'rating' with the rating value retrieved from the database
+                
+      const starContainers = document.querySelectorAll(".stars");
 
+      starContainers.forEach(container => {
+      const rating = parseInt(container.getAttribute("value"));
+
+    for (let i = 0; i < 5; i++) {
+    const star = document.createElement("span");
+    star.classList.add("star");
+
+    if (i < rating) {
+      star.classList.add("full-star");
+    }
+
+    star.innerHTML = "&#9733;";
+    container.appendChild(star);
+  }
+});
+
+                 
+   </script>
 
 </diV>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
-from .models import Doctor
+from .models import Doctor, Review
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -8,7 +8,8 @@ from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 
 def home(request):
     doctors=Doctor.objects.all()
-    context={'doctors': doctors}
+    rating=Review.objects.all()
+    context={'doctors': doctors, 'rating':rating}
     print(context)
     return render(request, "baseApp/index.html", context)
 #creating user
