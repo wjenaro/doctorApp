@@ -4,14 +4,21 @@
   
 {% block content %}
 <diV class="container-fluid">
-    <section>
-      <div class="px-4 py-5 my-5 text-center">
+    <section class="search-section">
+      <div class="px-4 py-5 my-5 text-center" style="display: flex; justify-content: center;
+      align-items: center;">
         
-        <h1 class="display-5 fw-bold text-body-emphasis">appointment</h1>
+        <form action="search.php" method="post">
+          <input type="text" name="doctor_specification" placeholder="Doctor Specification">
+          <input type="text" name="location" placeholder="Location">
+          <input type="submit" value="Search">
+          </form>
        
       </div>
     </section>
-    <section>
+    <section style=" border-style: groove;
+    border-width: 1px;
+    border-color: #ccc;">
         <div class="container px-4 py-5" id="icon-grid">
             <h2 class="pb-2 border-bottom"> Best Rated Doctors </h2> 
                  

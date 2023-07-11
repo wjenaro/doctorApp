@@ -1,7 +1,13 @@
+body {
+  background-image: linear-gradient(to bottom, #7b7bb8, #ffffff);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 /*
 rating styling 
 */
-
 
 
 #rating-container {
@@ -18,4 +24,78 @@ rating styling
 
 .full-star {
   color: #ffd700;
+}
+/*
+login button styling 
+*/
+.btn {
+  color:#fff;
+  width: 7rem;
+  margin: 5px;
+  padding: 10px 20px;
+}
+
+button:hover {
+  color:#24a0ed;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+  background-color: rgb(255, 255, 255);
+}
+.btn-acc{
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  background-color:#24a0ed;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  
+}
+.btn-acc:hover {
+  transform: scale(1.1);
+  color:#24a0ed;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+  background-color: rgb(255, 255, 255);
+}
+
+/*username styling*/
+.user-name{
+  text-transform: capitalize;
+  font-family: sans-serif;
+  margin-left:1rem;
+}
+
+#logo {
+  width: 150px;
+  max-width: 200px;
+}
+nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: #24a0ed;
+  border-bottom: 1px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+/* search form */
+
+
+
+input {
+  padding: 10px;
+  border: 1px solid #24a0ed;
+}
+
+input[type="submit"] {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+.search-section{
+  margin-top: -60px;
+  height: 300px;
+  background-image: url("img/search-section.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-bottom: 3px solid blue;
 }
