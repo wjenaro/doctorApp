@@ -1,47 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    {% block title %} {% endblock %}
    
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-    <style>
-      #rating-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-}
-
-.star {
-  font-size: 24px;
-  color: #ccc;
-}
-
-.full-star {
-  color: #ffd700;
-}
-
-    </style>
+    <link rel="stylesheet" href="{% static 'baseApp/style.css' %}">
+   
     
 </head>
 <body>
     
-    <!-- Navbar -->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <!-- Container wrapper -->
     <div class="container">
       <!-- Navbar brand -->
       <a class="navbar-brand me-2" href="#">
+       
         <img
-          src="#"
+          src="{% static 'baseApp/img/doctor-icon.png' %}"
           height="16"
           alt="Logo"
           loading="lazy"
-          style="margin-top: -1px;"
+          style="margin-top: -1px; width: 16px; height: 16px;"
         />
       </a>
   
