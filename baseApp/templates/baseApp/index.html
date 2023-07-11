@@ -8,14 +8,62 @@
       <div class="px-4 py-5 my-5 text-center" style="display: flex; justify-content: center;
       align-items: center;">
         
-        <form action="search.php" method="post">
-          <input type="text" name="doctor_specification" placeholder="Doctor Specification">
-          <input type="text" name="location" placeholder="Location">
-          <input type="submit" value="Search">
+        <form action="{% url 'home' %}" method="GET">
+          <input type="text" name="specification" placeholder="Doctor Specification" id="spec">
+          <input type="text" name="address" placeholder="Location" id="address">
+          <input type="submit" value="Search" id="search">
           </form>
        
       </div>
     </section>
+    <!--where doctors in specified place will appear-->
+    <section id="searchresults" class="hidden">
+      {% if queryset %}
+      <div class="container px-4 py-5" id="icon-grid">
+        <h2 class="pb-2 border-bottom"> Doctors in <span>{{ address }}</span> </h2> 
+             
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+
+          {% for item in queryset %}
+          <div class="col d-flex align-items-start" style="border: 1rem; padding: 1rem;">
+
+            <img src="{{ item.image.url }}" alt="my image" style="float:left;  width: 1in; height: 1.2in;"/>
+
+            <div>
+            <h5><span>{{ item.full_name }}</span></h5>
+            <h6><span>{{ item.specialization }}</span></h6>
+            <h6><span>{{ item.address }}</span></h6>
+            
+            <div id="rating-container">
+                                     
+             
+              {% for i in rating %}
+                  {% if i.doctor == item %}
+
+                  <div class="stars" value="{{ i.rating }}"> </div>
+                                                                       
+                  {% endif %}
+              {% endfor %}
+            </div>
+          
+            </div>
+
+            
+          
+          </div>
+
+          {% endfor %}
+
+                          
+        </div>
+      </div>
+
+      {% else %}
+      <p>No results found.</p>
+      {% endif %}
+    </section>
+  
+    <!--end search sections-->
     <section style=" border-style: groove;
     border-width: 1px;
     border-color: #ccc;">

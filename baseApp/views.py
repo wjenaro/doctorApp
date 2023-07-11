@@ -9,8 +9,17 @@ from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 def home(request):
     doctors=Doctor.objects.all()
     rating=Review.objects.all()
-    context={'doctors': doctors, 'rating':rating}
-    print(context)
+    #search results
+    specialization=request.GET.get('specification', '')
+    address=request.GET.get('address', '')
+     # queryset to filter the doctors
+    queryset = Doctor.objects.filter(
+        specialization__icontains=specialization,
+        address__icontains=address
+    )
+    print("This is may querryyyyy--------"+ str(queryset))
+    context={'doctors': doctors, 'rating':rating, 'queryset': queryset,}
+   
     return render(request, "baseApp/index.html", context)
 #creating user
 def createUser(request):
