@@ -15,12 +15,15 @@
           //section.classList.remove('hidden');
        // }
     //  }
-    function alertOnButtonClick() {
-      alert("You clicked the button!");
-    }
-    
-    // Get the button element.
-    const button = document.getElementById("search");
-    
-    // When the button is clicked, call the alertOnButtonClick() function.
-    button.addEventListener("click", alertOnButtonClick);
+    document.getElementById("search").addEventListener("click", function(event) {
+      var specification = document.getElementById("spec").value;
+      var address = document.getElementById("address").value;
+  
+      if (specification.trim() === "" || address.trim() === "") {
+        event.preventDefault(); // Prevent form submission
+        
+        alert("Please fill in all fields."); // Display alert message
+      }
+    });
+  
+  

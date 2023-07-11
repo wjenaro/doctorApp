@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %} <title> Home </title> {% endblock %}   
-  
+ 
 {% block content %}
 <diV class="container-fluid">
     <section class="search-section">
@@ -16,6 +16,8 @@
        
       </div>
     </section>
+ 
+    
     <!--where doctors in specified place will appear-->
     <section id="searchresults" class="hidden">
       {% if queryset %}
@@ -99,6 +101,19 @@
                 
               
               </div>
+              <script>
+                // form-validation.js
+document.getElementById("search").addEventListener("click", function(event) {
+    var specification = document.getElementById("spec").value;
+    var address = document.getElementById("address").value;
+  
+    if (specification.trim() === "" || address.trim() === "") {
+      event.preventDefault(); // Prevent form submission
+      alert("Please fill in all fields."); // Display alert message
+    }
+  });
+  
+              </script>
 
               {% endfor %}
 
