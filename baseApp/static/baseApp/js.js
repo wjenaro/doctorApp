@@ -15,15 +15,5 @@
           //section.classList.remove('hidden');
        // }
     //  }
-    document.getElementById("search").addEventListener("click", function(event) {
-      var specification = document.getElementById("spec").value;
-      var address = document.getElementById("address").value;
-  
-      if (specification.trim() === "" || address.trim() === "") {
-        event.preventDefault(); // Prevent form submission
-        
-        alert("Please fill in all fields."); // Display alert message
-      }
-    });
   
   

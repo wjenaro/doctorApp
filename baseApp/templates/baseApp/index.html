@@ -101,15 +101,20 @@
                 
               
               </div>
+              <!--JavaScript to varidate inputs 
+              -->
               <script>
-                // form-validation.js
-document.getElementById("search").addEventListener("click", function(event) {
+                // form-validation
+
+    document.querySelector("#search").addEventListener("click", function(event) {
+    //declare variables 
     var specification = document.getElementById("spec").value;
     var address = document.getElementById("address").value;
   
-    if (specification.trim() === "" || address.trim() === "") {
-      event.preventDefault(); // Prevent form submission
-      alert("Please fill in all fields."); // Display alert message
+    if (specification.trim() !== "" || address.trim() !== "") {
+      event.preventDefault(); // allows views based on the search 
+      var mysection=document.querySelector(".hidden");
+      mysection.classList.remove("hidden");
     }
   });
   
