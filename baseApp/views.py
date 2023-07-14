@@ -10,15 +10,19 @@ def home(request):
     doctors=Doctor.objects.all()
     rating=Review.objects.all()
     #search results
-    specialization=request.GET.get('specification', '')
-    address=request.GET.get('address', '')
-     # queryset to filter the doctors
-    queryset = Doctor.objects.filter(
-        specialization__icontains=specialization,
-        address__icontains=address
-    )
-    print("This is may querryyyyy--------"+ str(queryset))
-    context={'doctors': doctors, 'rating':rating, 'queryset': queryset,}
+    if request.method== 'GET': 
+        specialization=request.GET.get('specification')
+        address=request.GET.get('address')
+        # queryset to filter the doctors
+        queryset = Doctor.objects.filter(
+            specialization__icontains=specialization,
+            address__icontains=address
+        )
+        print("This is may querryyyyy--------"+ str(queryset))
+        context={'doctors': doctors, 'rating':rating, 'queryset': queryset}
+        return render(request, "baseApp/index.html", context)
+
+    context={'doctors': doctors, 'rating':rating}
    
     return render(request, "baseApp/index.html", context)
 #creating user
