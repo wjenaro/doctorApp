@@ -9,20 +9,24 @@ from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 def home(request):
     doctors=Doctor.objects.all()
     rating=Review.objects.all()
-    #search results
-    if request.method== 'GET': 
-        specialization=request.GET.get('specification')
-        address=request.GET.get('address')
-        # queryset to filter the doctors
-        queryset = Doctor.objects.filter(
-            specialization__icontains=specialization,
-            address__icontains=address
-        )
-        print("This is may querryyyyy--------"+ str(queryset))
-        context={'doctors': doctors, 'rating':rating, 'queryset': queryset}
-        return render(request, "baseApp/index.html", context)
+    # Get the search parameters from the form
+    specification = request.GET.get('specification')
+    address = request.GET.get('address')
+    # Create a queryset of doctors that match the search parameters
+    doctors_search = Doctor.objects.filter(
+        specialization__icontains=specification,
+        address__icontains=address
+    )
+    ratings = []
+    for doctor in doctors_search:
+        rating1 = 0
+        reviews = Review.objects.filter(doctor=doctor)
+        if reviews.count() > 0:
+            rating1 = sum(review.rating for review in reviews) / reviews.count()
+        ratings.append((doctor, rating1))
 
-    context={'doctors': doctors, 'rating':rating}
+
+    context={'doctors': doctors, 'rating':rating, 'doct':ratings}
    
     return render(request, "baseApp/index.html", context)
 #creating user

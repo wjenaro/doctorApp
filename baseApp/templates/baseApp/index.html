@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "baseApp/base.html" %}
 
 {% block title %} <title> Home </title> {% endblock %}   
  
@@ -19,51 +19,7 @@
  
     
     <!--where doctors in specified place will appear-->
-    <section id="searchresults" class="hidden">
-      {% if queryset %}
-      <div class="container px-4 py-5" id="icon-grid">
-        <h2 class="pb-2 border-bottom"> Doctors in <span>{{ address }}</span> </h2> 
-             
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
-
-          {% for item in queryset %}
-          <div class="col d-flex align-items-start" style="border: 1rem; padding: 1rem;">
-
-            <img src="{{ item.image.url }}" alt="my image" style="float:left;  width: 1in; height: 1.2in;"/>
-
-            <div>
-            <h5><span>{{ item.full_name }}</span></h5>
-            <h6><span>{{ item.specialization }}</span></h6>
-            <h6><span>{{ item.address }}</span></h6>
-            
-            <div id="rating-container">
-                                     
-             
-              {% for i in rating %}
-                  {% if i.doctor == item %}
-
-                  <div class="stars" value="{{ i.rating }}"> </div>
-                                                                       
-                  {% endif %}
-              {% endfor %}
-            </div>
-          
-            </div>
-
-            
-          
-          </div>
-
-          {% endfor %}
-
-                          
-        </div>
-      </div>
-
-      {% else %}
-      <p>No results found.</p>
-      {% endif %}
-    </section>
+   
   
     <!--end search sections-->
     <section style=" border-style: groove;
@@ -74,7 +30,7 @@
                  
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
 
-              {% for item in doctors %}
+              {% for doctor, rating in doct %}
               <div class="col d-flex align-items-start" style="border: 1rem; padding: 1rem;">
 
                 <img src="{{ item.image.url }}" alt="my image" style="float:left;  width: 1in; height: 1.2in;"/>
@@ -103,22 +59,7 @@
               </div>
               <!--JavaScript to varidate inputs 
               -->
-              <script>
-                // form-validation
-
-    document.querySelector("#search").addEventListener("click", function(event) {
-    //declare variables 
-    var specification = document.getElementById("spec").value;
-    var address = document.getElementById("address").value;
-  
-    if (specification.trim() !== "" || address.trim() !== "") {
-      event.preventDefault(); // allows views based on the search 
-      var mysection=document.querySelector(".hidden");
-      mysection.classList.remove("hidden");
-    }
-  });
-  
-              </script>
+      
 
               {% endfor %}
 
@@ -150,6 +91,8 @@
 
                  
    </script>
+
+   
 
 </diV>
 {% endblock %}
