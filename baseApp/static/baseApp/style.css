@@ -104,3 +104,8 @@ input[type="submit"] {
 .hidden {
   display: none;
 }
+/* hide search secttion 
+*/
+section#search-section {
+  display: none;
+}
