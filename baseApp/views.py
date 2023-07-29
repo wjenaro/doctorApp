@@ -27,7 +27,10 @@ def home(request):
         print(type(search_pressed))
         print("These are search results :"+str(doctors_in_my_location))
 
-    context={'doctors': doctors, 'rating':rating, 'LocDoctors':doctors_in_my_location, 'search_pressed': search_pressed,}
+    context={'doctors': doctors, 'rating':rating, 'locDoctors':doctors_in_my_location, 'search_pressed': search_pressed,}
+# Check if the doctors_in_my_location list is empty
+    if not doctors_in_my_location:
+        context['message'] = 'No results found'
 
 
    

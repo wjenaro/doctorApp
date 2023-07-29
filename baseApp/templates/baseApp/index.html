@@ -19,14 +19,14 @@
  
     
     <!--where doctors in specified place will appear---------------------------------------------------->
- 
-    <section class="hidden">
+ {% if search_pressed %}
+    <section class="hidden1">
     <div class="container px-4 py-5" id="icon-grid">
-      <h2 class="pb-2 border-bottom"> Doctors Within Your Area </h2> 
+      <h2 class="pb-2 border-bottom"> {{ search_pressed }} </h2> 
            
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
 
-        {% for item in doctors %}
+        {% for item in locDoctors %}
         <div class="col d-flex align-items-start" style="border: 1rem; padding: 1rem;">
 
           <img src="{{ item.image.url }}" alt="my image" style="float:left;  width: 1in; height: 1.2in;"/>
@@ -57,11 +57,16 @@
         -->
       {% endfor %}
 
-                        
+               
       </div>
+      {% if message %}
+      <div class="alert alert-warning" style="margin-top: -30px;">
+        <p class="message" style="text-align: center;">{{ message }}</p>
+      </div>
+  {% endif %} 
     </div>
    </section>
-   
+   {% endif %}
   <!--                      +================================================+                        -->
     <!--end search sections-->
     <section style=" border-style: groove;
