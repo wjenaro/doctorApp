@@ -5,28 +5,29 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
-
+'''
+homepage view =============================================================================
+'''
 def home(request):
     doctors=Doctor.objects.all()
     rating=Review.objects.all()
-    # Get the search parameters from the form
-    specification = request.GET.get('specification')
-    address = request.GET.get('address')
-    # Create a queryset of doctors that match the search parameters
-    doctors_search = Doctor.objects.filter(
-        specialization__icontains=specification,
-        address__icontains=address
-    )
-    ratings = []
-    for doctor in doctors_search:
-        rating1 = 0
-        reviews = Review.objects.filter(doctor=doctor)
-        if reviews.count() > 0:
-            rating1 = sum(review.rating for review in reviews) / reviews.count()
-        ratings.append((doctor, rating1))
+    '''
+    search parameters
+    '''
+    spec=request.GET.get('specification')
+    loc=request.GET.get('address')
+    '''make a search based'''
+    doctors_in_my_location=[]
+    if request.GET:
+        doctors_in_my_location=Doctor.objects.filter(
+            specialization__icontains=spec,
+            address__icontains=loc
+            )
+        print("These are search results :"+str(doctors_in_my_location))
+
+    context={'doctors': doctors, 'rating':rating, 'LocDoctors':doctors_in_my_location}
 
 
-    context={'doctors': doctors, 'rating':rating, 'doct':ratings}
    
     return render(request, "baseApp/index.html", context)
 #creating user

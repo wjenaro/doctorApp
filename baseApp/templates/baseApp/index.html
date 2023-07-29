@@ -18,9 +18,49 @@
     </section>
  
     
-    <!--where doctors in specified place will appear-->
-   
-  
+    <!--where doctors in specified place will appear---------------------------------------------------->
+   <section>
+    <div class="container px-4 py-5" id="icon-grid">
+      <h2 class="pb-2 border-bottom"> Doctors Within Your Area </h2> 
+           
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+
+        {% for item in doctors %}
+        <div class="col d-flex align-items-start" style="border: 1rem; padding: 1rem;">
+
+          <img src="{{ item.image.url }}" alt="my image" style="float:left;  width: 1in; height: 1.2in;"/>
+
+          <div>
+          <h5><span>{{ item.full_name }}</span></h5>
+          <h6><span>{{ item.specialization }}</span></h6>
+          <h6><span>{{ item.address }}</span></h6>
+          
+          <div id="rating-container">
+                                   
+           
+            {% for i in rating %}
+                {% if i.doctor == item %}
+
+                <div class="stars" value="{{ i.rating }}"> </div>
+                                                                     
+                {% endif %}
+            {% endfor %}
+          </div>
+        
+          </div>
+
+          
+        
+        </div>
+        <!--JavaScript to varidate inputs 
+        -->
+      {% endfor %}
+
+                        
+      </div>
+    </div>
+   </section>
+  <!--                      +================================================+                        -->
     <!--end search sections-->
     <section style=" border-style: groove;
     border-width: 1px;
@@ -30,7 +70,7 @@
                  
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
 
-              {% for doctor, rating in doct %}
+              {% for item in doctors %}
               <div class="col d-flex align-items-start" style="border: 1rem; padding: 1rem;">
 
                 <img src="{{ item.image.url }}" alt="my image" style="float:left;  width: 1in; height: 1.2in;"/>
@@ -57,9 +97,7 @@
                 
               
               </div>
-              <!--JavaScript to varidate inputs 
-              -->
-      
+                        
 
               {% endfor %}
 
