@@ -11,7 +11,7 @@
         <form action="{% url 'home' %}" method="GET">
           <input type="text" name="specification" placeholder="Doctor Specification" id="spec">
           <input type="text" name="address" placeholder="Location" id="address">
-          <input type="submit" value="Search" id="search">
+          <input type="submit" value="Search" name="search" id="search">
           </form>
        
       </div>
@@ -19,7 +19,8 @@
  
     
     <!--where doctors in specified place will appear---------------------------------------------------->
-   <section>
+ 
+    <section>
     <div class="container px-4 py-5" id="icon-grid">
       <h2 class="pb-2 border-bottom"> Doctors Within Your Area </h2> 
            
@@ -60,6 +61,7 @@
       </div>
     </div>
    </section>
+   
   <!--                      +================================================+                        -->
     <!--end search sections-->
     <section style=" border-style: groove;

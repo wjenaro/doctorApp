@@ -18,14 +18,16 @@ def home(request):
     loc=request.GET.get('address')
     '''make a search based'''
     doctors_in_my_location=[]
+    search_pressed = request.GET.get('search')
     if request.GET:
         doctors_in_my_location=Doctor.objects.filter(
             specialization__icontains=spec,
             address__icontains=loc
             )
+        print(type(search_pressed))
         print("These are search results :"+str(doctors_in_my_location))
 
-    context={'doctors': doctors, 'rating':rating, 'LocDoctors':doctors_in_my_location}
+    context={'doctors': doctors, 'rating':rating, 'LocDoctors':doctors_in_my_location, 'search_pressed': search_pressed,}
 
 
    
