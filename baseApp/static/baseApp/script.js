@@ -5,7 +5,7 @@ $(document).ready(function(){
         if(spec==="" && address===""){
             event.preventDefault();
         // Display an error message (you can customize this part)
-        alert("Please fill in at least one field.");
+        $("#message").text("Please Enter at least one parameter");
         }
       });
  
