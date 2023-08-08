@@ -139,7 +139,50 @@ login form styling
   margin: 5px 0;
   display: block;
 }
+.login-input {
+  width: 100%; /* Adjust the width as needed */
+  padding: 10px; /* Add padding for spacing */
+  border: 1px solid #ccc; /* Add a simple border */
+  border-radius: 5px; /* Round the corners */
+  font-size: 16px; /* Set the font size */
+  transition: border-color 0.3s ease-in-out; /* Add transition for visual feedback */
+
+  /* Add more styles for better readability */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.login-input:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove the default outline */
+}
 
 .text-center {
   text-align: center;
+}
+.login-header{
+text-align: center;
+}
+.header-icon {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  border-radius: 50%; /* Make the image circular */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+  transition: transform 0.3s ease-in-out; /* Add a smooth hover effect */
+
+  /* Center the image within its container */
+  display: block;
+  margin: 0 auto;
+}
+
+.header-icon:hover {
+  transform: scale(1.2); /* Enlarge the image on hover */
+}
+
+.login-page-image{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.log-image{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1.8); 
 }

@@ -1,5 +1,5 @@
 {% extends 'baseApp/base.html' %}
-
+{% load static %}
 {% block content %}
   
 <div class="row align-items-md-stretch">
@@ -7,18 +7,34 @@
         <div class="h-100 p-5 text-bg-dark rounded-3">
           <h2>Welcome back!</h2>
           <p>We're so glad to see you back on our app! We know that managing your health can be a lot to keep track of, and we're here to make it easier.</p>
-         
+         <div class="login-page-image">
+          <img
+          class="log-image" 
+          src="{% static 'baseApp/img/icons/medical-doctor-48.png' %}" 
+          width="60%"
+          height="60%"
+          >
+         </div>
 
         </div>
       </div>
         <div class="col-md-6">
-          <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+        <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+          <!--login header-->
+          <div style="text-align: center;">
+            <img class="header-icon" src="{% static 'baseApp\img\icons\icons8-user-32.png' %}" alt="User"/>
+            <h6 class="login-header"> Login Here <code>👇</code></h6>
+
+            <hr>
+
+          </div>
+          <!--End login header -->
         <form method="POST" action="" class="login-form" style="display: flex;
         flex-direction: column; align-items:flex-start;">
           {% csrf_token %}
-          <i class="login-label" style="display: block;">Username</i> 
+          <i class="login-label" style="display: block;">Username:</i> 
           <input class="login-input" type="text" name="username" style="display: block; width: 100%;" />
-          <i class="login-label" style="display: block;">password</i>
+          <i class="login-label" style="display: block;">password:</i>
           <input class="login-input" type="password" name="password" style="display: block; width: 100%;"/>
           <input class="login-input" type="submit" value="login" style="align-self: center;margin: 10px 0; width: 10rem;">
       </form>
