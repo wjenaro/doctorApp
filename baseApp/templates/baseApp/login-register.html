@@ -1,12 +1,48 @@
 {% extends 'baseApp/base.html' %}
-
+{% load static %}
 {% block content %}
 
-<form method="POST" action="">
-	{% csrf_token %}
-	<h2>Sign Up</h2>
-	{{ form.as_p }}		
-	<input type="submit" value="Register" />
-</form>
+<div class="row align-items-md-stretch">
+	<div class="col-md-6">
+	  <div class="h-100 p-5 text-bg-dark rounded-3">
+		<h2>Welcome back!</h2>
+		<p>We're so glad to see you back on our app! We know that managing your health can be a lot to keep track of, and we're here to make it easier.</p>
+	   <div class="login-page-image">
+		<img
+		class="log-image" 
+		src="{% static 'baseApp/img/icons/medical-doctor-48.png' %}" 
+		width="60%"
+		height="60%"
+		>
+	   </div>
+
+	  </div>
+	</div>
+	  <div class="col-md-6">
+	  <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+		<!--login header-->
+		<div style="text-align: center;">
+		  <img class="header-icon" src="{% static 'baseApp\img\icons\icons8-user-32.png' %}" alt="User"/>
+		  <h6 class="login-header"> Sign Up Here <code>👇</code></h6>
+
+		  <hr>
+
+		</div>
+		<!--End login header -->
+		<form method="POST" action="">
+			{% csrf_token %}
+			<h2>Sign Up</h2>
+			{{ form.as_p }}		
+			<input type="submit" value="Register" />
+		</form>
+
+	<p class="text-center"> <a href="/login">Login</a>.</p>
+  </div>
+
+	  </div>
+	</div>
+  </div>
+
+
 
 {% endblock content%}
