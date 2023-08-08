@@ -1,14 +1,34 @@
 {% extends 'baseApp/base.html' %}
 
 {% block content %}
-    <form method="POST" action="">
-      {% csrf_token %}
-      <label>Username</label>
-      <input type="text" name="username" />
-      <label>password</label>
-      <input type="password" name="password" />
-      <input type="submit" value="login">
-    </form>
-    <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
-  </div>
+  
+<div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-bg-dark rounded-3">
+          <h2>Welcome back!</h2>
+          <p>We're so glad to see you back on our app! We know that managing your health can be a lot to keep track of, and we're here to make it easier.</p>
+         
+
+        </div>
+      </div>
+        <div class="col-md-6">
+          <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+        <form method="POST" action="" class="login-form" style="display: flex;
+        flex-direction: column; align-items:flex-start;">
+          {% csrf_token %}
+          <i class="login-label" style="display: block;">Username</i> 
+          <input class="login-input" type="text" name="username" style="display: block; width: 100%;" />
+          <i class="login-label" style="display: block;">password</i>
+          <input class="login-input" type="password" name="password" style="display: block; width: 100%;"/>
+          <input class="login-input" type="submit" value="login" style="align-self: center;margin: 10px 0; width: 10rem;">
+      </form>
+      <p class="forgot-password"><a href="">Forgot Password</a></p>
+      <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
+    </div>
+
+        </div>
+      </div>
+    </div>
+
+
 {% endblock %}
