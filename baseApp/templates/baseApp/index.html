@@ -32,9 +32,9 @@
           <img src="{{ item.image.url }}" alt="my image" style="float:left;  width: 1in; height: 1.2in;"/>
 
           <div>
-          <h5><span>{{ item.full_name }}</span></h5>
-          <h6><span>{{ item.specialization }}</span></h6>
-          <h6><span>{{ item.address }}</span></h6>
+          <h5 class="doct-n">{{ item.full_name }}</h5>
+          <h6 class="doc-s">{{ item.specialization }}</h6>
+          <h6 class="doc-s">{{ item.address }}</h6>
           
           <div id="rating-container">
                                    
@@ -78,14 +78,14 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
 
               {% for item in doctors %}
-              <div class="col d-flex align-items-start" style="border: 1rem; padding: 1rem;">
+              <div class="col d-flex align-items-start">
 
-                <img src="{{ item.image.url }}" alt="my image" style="float:left;  width: 1in; height: 1.2in;"/>
+                <img src="{{ item.image.url }}" alt="my image" style="float:left; margin: 2px;  width: 1in; height: 1.2in;"/>
 
                 <div>
-                <h5><span>{{ item.full_name }}</span></h5>
-                <h6><span>{{ item.specialization }}</span></h6>
-                <h6><span>{{ item.address }}</span></h6>
+                <h5 class="doct-n">{{ item.full_name }}</h5>
+                <h6 class="doc-s">{{ item.specialization }}</h6>
+                <h6 class="doc-s">{{ item.address }}</h6>
                 
                 <div id="rating-container">
                                          

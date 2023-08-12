@@ -8,6 +8,25 @@ body {
 /*
 rating styling 
 */
+.doct-n {
+  font-weight: bold;
+  margin-left: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.doc-s {
+  white-space: nowrap;
+  margin-left: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.doct-n:hover, .doc-s:hover {
+  transform: scale(1.1); /* Increase the value to enlarge the text more */
+}
+
+
+/*
+*/
 
 
 #rating-container {
@@ -187,31 +206,17 @@ text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 1.8); 
 }
 
-/*sign up form*/
-.signup-form {
-  background-color: #bb0101;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/*
+homepage featured doctors 
+*/
+
+.col.d-flex.align-items-start {
+  border-bottom: 0.001px dotted #1e065f; /* Create a groove border with a color */
+  padding: 10px; /* Add padding for spacing */
+  transition: border-color 0.3s ease-in-out; /* Add a transition for the border color change */
+
 }
 
-/* Style for form fields */
-.signup-form input[type="text"],
-.signup-form input[type="email"],
-.signup-form input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-/* Style for form buttons */
-.signup-form button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.col.d-flex.align-items-start:hover {
+  border-color: #007bff; /* Change the border color on hover */
 }
