@@ -4,6 +4,8 @@ from .models import Doctor, Review
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 '''
 homepage view =============================================================================
@@ -36,22 +38,52 @@ def home(request):
    
     return render(request, "baseApp/index.html", context)
 #creating user
+
 def createUser(request):
-    form=SignUpForm()
+    """
+    Create a new user and authenticate them.
+
+    Args:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponse: The response object.
+
+    Raises:
+        None
+    """
     if request.method == "POST":
-        form=SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username=form.cleaned_data.get('username')
-            raw_password=form.cleaned_data.get('password1')
-            user= authenticate(username=username, password=raw_password)
+        # Get user data from request
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        # Create user
+        user = User.objects.create_user(
+            username=username,
+            first_name=firstname,
+            last_name=lastname,
+            email=email,
+            password=password
+        )
+
+        # Authenticate user
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            # Login user and redirect to home page
             login(request, user)
             return redirect('home')
         else:
-            messages.add_message(request, messages.INFO, "Hello world.")
-            print ("Data not sent")
+            print("Authentication failed")
+    else:
+        print("Could not create a user")
 
-    return render(request, "baseApp/login-register.html", {"form": form})
+    # Render login-register.html template
+    return render(request, "baseApp/login-register.html")
+
+   
 #login
 @csrf_protect
 @ensure_csrf_cookie
