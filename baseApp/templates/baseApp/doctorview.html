@@ -2,23 +2,28 @@
 {% load static %}
 
 {% block content %}
-<div class="container col-xl-10 col-xxl-8 px-4 py-5">
-
-    <div class="row align-items-center g-lg-5 py-5">
-
+<!--main container starts here-->
+<div class="container col-xl-10 col-xxl-8 px-1 py-1">
+<!--Main Row-->
+    <div class="row g-lg-5 py-2">
+<!--Doctor information panel-->
       <div class="col-lg-7 text-center text-lg-start">
         <div class="row">
             <div class="col-lg-4">
-                <img src="static\baseApp\img\Dr Zoya Lalani.jpg" alt="doctor">
-                <div class="overall-reviews">
+                <div class="image-container">
+                    <img id="doctorview-img" src="static\baseApp\img\Dr Zoya Lalani.jpg" alt="doctor">
+                  </div>
+                <div class="overall-reviews py-3">
                     <span>Best rated Doctor</span>
                 </div>
 
             </div>
             <div class="col-lg-8">
                 <h5>About Doctor</h5>
+                <hr>
                 <p>Consultant Obstetrician Gynaecologist and Foetal Medicine Specialist at Aga Khan University Hospital​, Nairobi</p>
            <h6>Qualifications</h6>
+           <hr>
            <p>MBChB (Moi University) (2003)
             MMed-OB/GYN(Aga Khan University, Nairobi) (2010)
             MRCOG- UK (2011)​
@@ -28,8 +33,10 @@
             </div>
 
         </div>
+        <hr>
         <!-- ratings and reviews-->
-        <div class="row">
+        <div class="row py-2 pb-5 mb-5">
+            <h5>Patient Reviews and Ratings</h5>
             <div class="col-md-4">
                 <div class="card"> <i class="fa fa-quote-left u-color"></i>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
@@ -66,36 +73,38 @@
         </div>
         
       </div>
+      <!--end of doctor panel--- included the rating and reviews-->
 
-      <div class="col-md-10 mx-auto col-lg-5">
+      <div class="col-md-10 mx-auto col-lg-5 mt-5">
         <div class="position-sticky" style="top: 2rem;">
         
-      <div><span>Booking Information</span></div>
-      <div> 
+      <div class="mt-3" id="booking-information"><span>Booking Information</span></div>
+      <div class="booking-main-container"> 
         <div><span>Fee</span></div>
         <div><span>Waiting time</span></div>
       </div>
       <div>
         <h6>Book Appointment</h6>
-        <div class="calendar">
-    <div class="day">Monday</div>
-    <div class="day">Tuesday</div>
-    <div class="day">Wednesday</div>
-    <div class="day">Thursday</div>
-    <div class="day">Friday</div>
-    <div class="day">Saturday</div>
-    <div class="day">Sunday</div>
-    <!-- Placeholder for appointment slots -->
-    <div class="appointment-slot"></div>
-    <div class="appointment-slot"></div>
-    <div class="appointment-slot"></div>
-    <!-- Add more appointment slots as needed -->
-  </div>
+        <hr>
+        <section id="availability">
+                    <p>Select a date and time for your appointment:</p>
+            <form id="booking-form">
+                <label class="booking-label" for="date">Select Date:</label>
+                <input class="booking-input" type="date" id="date" name="date" required>
+
+                <label class="booking-label" for="time">Select Time:</label>
+                <input class="booking-input" type="time" id="time" name="time" required>
+
+                <button class="booking-button" type="submit">Book Appointment</button>
+            </form>
+        </section>
       </div>
       </div>
       </div>
     </div>
+    <!--end of the main row-->
   </div>
+  <!--end the main container-->
 
   
 {% endblock %}

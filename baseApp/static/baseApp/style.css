@@ -266,15 +266,123 @@ body, h1, h2, h3, p, ul, li {
     grid-template-columns: repeat(1, 1fr);
   }
 }
-.rating {
-  font-size: 24px;
-  color: gold;
+/* reviews stylings */
+body {
+  background-color: blue
 }
 
-.star {
-  margin-right: 5px;
+.container-m {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding:20px;
 }
 
-.btn {
-  margin-top: 10px;
+.card {
+  background-color: #fff;
+  padding: 15px;
+  border: none;
+  height: 250px;
+  margin-top: 10px
 }
+
+.u-color {
+  color: blue
+}
+
+.user-image img {
+  border: 3px solid #00f;
+  padding: 2px
+}
+
+
+.image-container {
+  border: 2px solid #ddd;
+  padding: 10px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+#doctorview-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+#booking-information {
+  background-color: #3498db; /* Bluish background color */
+  color: white; /* White text color */
+  text-align: center; /* Center-align text */
+  border-radius: 10%; /* Make a round border */
+  border-style: groove; /* Apply grooved border */
+  padding: 10px; /* Add some padding for better visual */
+  width: 100%; /* Set a fixed width for better visibility */
+}
+.booking-main-container {
+  display: flex;        /* Use flexbox layout */
+  justify-content: space-between; /* Equal spacing between columns */
+  width: 100%;          /* Expand to the full width of the parent container */
+  max-width: 600px;     /* Optional: Set a maximum width for the container */
+  margin: 0 auto;       /* Optional: Center the container horizontally */
+  padding: 20px;        /* Optional: Add some padding */
+}
+
+.booking-main-container div {
+  flex: 1;              /* Distribute available space equally between columns */
+  padding: 10px;        /* Optional: Add padding to columns */
+ 
+  box-sizing: border-box; /* Include padding and border in the total width */
+}
+
+.booking-main-container span {
+  display: block;       /* Each span on a separate line */
+  text-align: center;
+}
+
+#availability {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.booking-label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.booking-input[type="date"],
+.booking-input[type="time"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+
+.booking-button {
+  background-color: #3498db;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.booking-button:hover {
+  background-color: #2980b9;
+}
+
+
+
+
+
+
+
+
+
