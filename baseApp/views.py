@@ -106,3 +106,6 @@ def loginUser(request):
 def logoutView(request):
     logout(request)
     return redirect('home')
+#doctor view
+def doctorView(request):
+    return render(request, "baseApp/doctorview.html")

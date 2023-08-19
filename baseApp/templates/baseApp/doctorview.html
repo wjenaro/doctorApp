@@ -1,0 +1,62 @@
+{% extends 'baseApp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+
+    <div class="row align-items-center g-lg-5 py-5">
+
+      <div class="col-lg-7 text-center text-lg-start">
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="static\baseApp\img\Dr Zoya Lalani.jpg" alt="doctor">
+                <div class="overall-reviews">
+                    <span>Best rated Doctor</span>
+                </div>
+
+            </div>
+            <div class="col-lg-8">
+                <h5>About Doctor</h5>
+                <p>Consultant Obstetrician Gynaecologist and Foetal Medicine Specialist at Aga Khan University Hospital​, Nairobi</p>
+           <h6>Qualifications</h6>
+           <p>MBChB (Moi University) (2003)
+            MMed-OB/GYN(Aga Khan University, Nairobi) (2010)
+            MRCOG- UK (2011)​
+            Fellowship Fetal Medicine/quality control in ultrasound-University of Oxford (2014)
+            International Masters in Maternal Fetal Medicine (University of Barcelona, Spain ) (2019)
+            Dip Maternal Fetal Medicine (Fetal Medicine Foundation, Barcelona, Spain) (2019)</p>
+            </div>
+
+        </div>
+        
+      </div>
+
+      <div class="col-md-10 mx-auto col-lg-5">
+      <div><span>Booking Information</span></div>
+      <div> 
+        <div><span>Fee</span></div>
+        <div><span>Waiting time</span></div>
+      </div>
+      <div>
+        <h6>Book Appointment</h6>
+        <div class="calendar">
+    <div class="day">Monday</div>
+    <div class="day">Tuesday</div>
+    <div class="day">Wednesday</div>
+    <div class="day">Thursday</div>
+    <div class="day">Friday</div>
+    <div class="day">Saturday</div>
+    <div class="day">Sunday</div>
+    <!-- Placeholder for appointment slots -->
+    <div class="appointment-slot"></div>
+    <div class="appointment-slot"></div>
+    <div class="appointment-slot"></div>
+    <!-- Add more appointment slots as needed -->
+  </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  
+{% endblock %}
