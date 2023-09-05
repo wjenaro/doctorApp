@@ -28,14 +28,33 @@ cd django-doctor-appointment-app
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+### 3. Install Dependencies
+# Install the project dependencies using pip.
+```bash
 pip install -r requirements.txt
-
+```
+### 4. Database Setup
+Configure your database settings in settings.py. By default, it's set to use PostgreSQL, but you can choose a different database if needed.
+```bash
 python manage.py migrate
-
+```
+### 5. Apply Migrations
+# Apply the initial database migrations.
+### 5. Apply Migrations
+# Apply the initial database migrations.
+```bash
 python manage.py createsuperuser
-
+```
+### 6. Create Superuser
+# Create an admin superuser for accessing the Django admin panel.
+```bash
+python manage.py runserver
+```
+### 7. Start the Development Server
+```bash
 python manage.py runserver
 
+```
 
-Make sure to replace `"yourusername"` with the actual GitHub username or organization name if you intend to host the project on GitHub.
 
