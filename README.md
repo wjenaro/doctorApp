@@ -40,14 +40,13 @@ Configure your database settings in settings.py. By default, it's set to use Pos
 python manage.py migrate
 ```
 ### 5. Apply Migrations
-# Apply the initial database migrations.
-### 5. Apply Migrations
-# Apply the initial database migrations.
+Apply the initial database migrations.
+
 ```bash
 python manage.py createsuperuser
 ```
 ### 6. Create Superuser
-# Create an admin superuser for accessing the Django admin panel.
+Create an admin superuser for accessing the Django admin panel.
 ```bash
 python manage.py runserver
 ```
