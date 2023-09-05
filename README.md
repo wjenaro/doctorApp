@@ -23,3 +23,17 @@ The **Django Doctor Appointment App** is a web application designed to facilitat
 ```bash
 git clone https://github.com/yourusername/django-doctor-appointment-app.git
 cd django-doctor-appointment-app
+
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+
+python manage.py migrate
+
+python manage.py createsuperuser
+
+python manage.py runserver
+
+
+Make sure to replace `"yourusername"` with the actual GitHub username or organization name if you intend to host the project on GitHub.
+
