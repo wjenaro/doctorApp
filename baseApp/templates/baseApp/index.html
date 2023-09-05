@@ -5,14 +5,22 @@
 {% block content %}
 <diV class="container-fluid">
     <section class="search-section">
-      <div class="px-4 py-5 my-5 text-center" style="display: flex; justify-content: center;
-      align-items: center;">
+      <div class="px-4 py-5 my-5 text-center">
+        <form class="form-search" action="{% url 'home' %}" method="GET">
+          <div class="row">
+            <div class="col-md-4 py-5">
+              <input class="form-control" type="text" name="specification" placeholder="Doctor Specification" id="spec">
+            </div>
+            <div class="col-md-4 py-5">
+              <input class="form-control" type="text" name="address" placeholder="Location" id="address">
+            </div>
+            <div class="col-md-4 py-5">
+              <input class="btn btn-primary" type="submit" value="Search" name="search" id="search">
+            </div>
+          </div>
+        </form>
         
-        <form action="{% url 'home' %}" method="GET">
-          <input type="text" name="specification" placeholder="Doctor Specification" id="spec">
-          <input type="text" name="address" placeholder="Location" id="address">
-          <input type="submit" value="Search" name="search" id="search">
-          </form>
+             
          
       </div>  <p class="error-message" style="text-align: center; color: brown; margin-top: -60px;" id="message"></p>
     </section>
