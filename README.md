@@ -30,7 +30,7 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 ### 3. Install Dependencies
-# Install the project dependencies using pip.
+Install the project dependencies using pip.
 ```bash
 pip install -r requirements.txt
 ```
@@ -47,6 +47,8 @@ python manage.py createsuperuser
 ```
 ### 6. Create Superuser
 Create an admin superuser for accessing the Django admin panel.
+
+
 ```bash
 python manage.py runserver
 ```
