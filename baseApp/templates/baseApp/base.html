@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="{% static 'baseApp/img/doctor-icon-removebg-preview.png' %}" type="image/gif" sizes="16x16">
     {% block title %} {% endblock %}
    
@@ -26,118 +27,71 @@
     <!-- Header -->
     <header class="header">
       <nav class="navbar navbar-expand-lg header-nav">
-        <div class="navbar-header">
-          <a id="mobile_btn" href="javascript:void(0);">
-            <span class="bar-icon">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </a>
-          <a href="{% url 'home' %}" class="navbar-brand logo">
-          
-            <img
-            class="img-fluid"
-            src="{% static 'baseApp/img/doctor-icon-removebg-preview.png' %}"
-            width="50"
-            height="50" 
-          
-            alt="Logo"
-            id="logo"
-            
-          />
-          </a>
-        </div>
-        <div class="main-menu-wrapper">
-          <div class="menu-header">
-            <a href="{% url 'home' %}" class="menu-logo">
-              <img src="assets/img/logo.png" class="img-fluid" alt="Logo">
-            </a>
-            <a id="menu_close" class="menu-close" href="javascript:void(0);">
-              <i class="fas fa-times"></i>
-            </a>
-          </div>
-          <ul class="main-nav">
-            <li class="active">
-              <a href="{% url 'home' %}">Home</a>
+        <button id="mobile_btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="bar-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+        <a href="{% url 'home' %}" class="navbar-brand logo">
+          <img class="img-fluid" src="{% static 'baseApp/img/doctor-icon-removebg-preview.png' %}" width="50" height="50" alt="Logo" id="logo">
+        </a>
+    
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
-            <li class="has-submenu">
-              <a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
-              <ul class="submenu">
-                <li><a href="">Doctor Dashboard</a></li>
-                <li><a href="">Appointments</a></li>
-                <li><a >Schedule Timing</a></li>
-                <li><a href=""">Patients List</a></li>
-                <li><a href="">Patients Profile</a></li>
-                <li><a href="">Chat</a></li>
-                
-              </ul>
-            </li>	
-            <li class="has-submenu">
-              <a href="#">Patients <i class="fas fa-chevron-down"></i></a>
-              <ul class="">
-                <li><a href="">Search Doctor</a></li>
-                <li><a href="">Doctor Profile</a></li>
-                <li><a href="">Booking</a></li>
-               
-              </ul>
-            </li>	
-         
-          
-          </ul>		 
-        </div>		 
-      
-        
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Doctors</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Doctor Dashboard</a>
+                <a class="dropdown-item" href="#">Appointments</a>
+                <a class="dropdown-item" href="#">Schedule Timing</a>
+                <a class="dropdown-item" href="#">Patients List</a>
+                <a class="dropdown-item" href="#">Patients Profile</a>
+                <a class="dropdown-item" href="#">Chat</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Patients</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Search Doctor</a>
+                <a class="dropdown-item" href="#">Doctor Profile</a>
+                <a class="dropdown-item" href="#">Booking</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+    
         <div class="d-flex align-items-center">
           {% if request.user.is_authenticated %}
             <button type="button" class="btn">
-              <a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout </a>
+              <a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
             </button>
           {% else %}
-              <button type="button" class="btn">
-                <a href="{% url 'login' %}">Login<i class="fa fa-sign-in" aria-hidden="true"></i> </a>
-              </button>
+            <button type="button" class="btn">
+              <a href="{% url 'login' %}">Login <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+            </button>
           {% endif %}
-          
+    
           {% if user.is_authenticated %}
-          <a class="btn-acc" href="" role="button"><i class="fa fa-address-book" aria-hidden="true"></i><span class="user-name"> {{ user.username }}</span></a>
-      {% else %}
-          <a class="btn-acc" href="{% url 'login' %}" role="button">Account<i class="fa fa-home" aria-hidden="true"></i></a>
-      {% endif %}
-      
-                  
+            <a class="btn-acc" href="" role="button"><i class="fa fa-address-book" aria-hidden="true"></i><span class="user-name"> {{ user.username }}</span></a>
+          {% else %}
+            <a class="btn-acc" href="{% url 'login' %}" role="button">Account <i class="fa fa-home" aria-hidden="true"></i></a>
+          {% endif %}
         </div>
       </nav>
     </header>
-    <section class="section section-search">
-      <div class="container-fluid">
-        <div class="banner-wrapper">
-          <div class="banner-header text-center">
-            <h1>Search Doctor, Make an Appointment</h1>
-            <p>Discover the best doctors, clinic & hospital the city nearest to you.</p>
-          </div>
-                       
-          <!-- Search -->
-          <div class="search-box">
-            <form action="templateshub.net">
-              <div class="form-group search-location">
-                <input type="text" class="form-control" placeholder="Search Location">
-                <span class="form-text">Based on your Location</span>
-              </div>
-              <div class="form-group search-info">
-                <input type="text" class="form-control" placeholder="Search Doctors, Clinics, Hospitals, Diseases Etc">
-                <span class="form-text">Ex : Dental or Sugar Check up etc</span>
-              </div>
-              <button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"></i> <span>Search</span></button>
-            </form>
-          </div>
-          <!-- /Search -->
-          
-        </div>
-      </div>
-    </section>
+    
+    
 
-    </div>
+
+
+ 
 
 
 
@@ -164,6 +118,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js
 
 
 </script>
+</div>
 
   </body>
   </html>
