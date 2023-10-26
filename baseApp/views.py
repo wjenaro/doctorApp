@@ -1,3 +1,6 @@
+from typing import List, Dict
+from django.http import HttpRequest, HttpResponse
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
 from .models import Doctor, Review
@@ -12,7 +15,17 @@ homepage view ==================================================================
 '''
 
 
-def home(request):
+def home(request: HttpRequest) -> HttpResponse:
+    """
+    Renders the home page with doctors and reviews based on user input.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The HTTP response object that renders the home page.
+    """
+    # Retrieve all doctors and reviews from the database
     doctors = Doctor.objects.all()
     rating = Review.objects.all()
 
@@ -20,22 +33,23 @@ def home(request):
     spec = request.GET.get('specification')
     loc = request.GET.get('address')
 
-    # Initialize doctors_in_my_location as an empty list
-    doctors_in_my_location = []
-
-    # Check if the search button was pressed
-    search_pressed = request.GET.get('search')
-
-    if search_pressed:
-        # Filter doctors based on user input
-        doctors_in_my_location = Doctor.objects.filter(
-            specialization__icontains=spec,
-            address__icontains=loc
+    # Filter doctors based on user input
+    if spec and loc:
+        doctors_in_my_location = doctors.filter(
+            Q(specialization__icontains=spec) & Q(address__icontains=loc)
         )
+    else:
+        doctors_in_my_location = []
 
-    context = {'doctors': doctors, 'rating': rating, 'locDoctors': doctors_in_my_location, 'search_pressed': search_pressed}
+    # Create context dictionary
+    context: Dict[str, any] = {
+        'doctors': doctors,
+        'rating': rating,
+        'locDoctors': doctors_in_my_location,
+        'search_pressed': bool(spec and loc),
+    }
 
-    # Check if the doctors_in_my_location list is empty
+    # Add message if doctors_in_my_location is empty
     if not doctors_in_my_location:
         context['message'] = 'No results found'
 
