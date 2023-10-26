@@ -10,34 +10,37 @@ from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 '''
 homepage view =============================================================================
 '''
+
+
 def home(request):
-    doctors=Doctor.objects.all()
-    rating=Review.objects.all()
-    '''
-    search parameters
-    '''
-    spec=request.GET.get('specification')
-    loc=request.GET.get('address')
-    '''make a search based'''
-    doctors_in_my_location=[]
+    doctors = Doctor.objects.all()
+    rating = Review.objects.all()
+
+    # Get search parameters from the request's GET parameters
+    spec = request.GET.get('specification')
+    loc = request.GET.get('address')
+
+    # Initialize doctors_in_my_location as an empty list
+    doctors_in_my_location = []
+
+    # Check if the search button was pressed
     search_pressed = request.GET.get('search')
-    if request.GET:
-        doctors_in_my_location=Doctor.objects.filter(
+
+    if search_pressed:
+        # Filter doctors based on user input
+        doctors_in_my_location = Doctor.objects.filter(
             specialization__icontains=spec,
             address__icontains=loc
-            )
-        print(type(search_pressed))
-        print("These are search results :"+str(doctors_in_my_location))
+        )
 
-    context={'doctors': doctors, 'rating':rating, 'locDoctors':doctors_in_my_location, 'search_pressed': search_pressed,}
-# Check if the doctors_in_my_location list is empty
+    context = {'doctors': doctors, 'rating': rating, 'locDoctors': doctors_in_my_location, 'search_pressed': search_pressed}
+
+    # Check if the doctors_in_my_location list is empty
     if not doctors_in_my_location:
         context['message'] = 'No results found'
 
-
-   
     return render(request, "baseApp/index.html", context)
-#creating user
+
 
 def createUser(request):
     """
